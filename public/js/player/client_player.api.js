@@ -35,7 +35,29 @@ const transferPlayback = async (deviceId, play = false) => {
 }
 
 
+/**
+ * This function put a request to Spotify server for play track.
+ * 
+ * @param {string} deviceId - Current device id
+ * @param {object} reqBody - And object for PUT request
+ */
+const play = async (deviceId, reqBody) => {
+    try {
+        const response = await fetch(`${BASE_URL}/me/player/play?device_id=${deviceId}`, {
+            method: 'PUT',
+            headers,
+            body: JSON.stringify(reqBody)
+        })
+
+        return response;
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+
 export {
     cookies,
-    transferPlayback
+    transferPlayback,
+    play
 }

@@ -4,8 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon app",
-    "watch": "nodemon --watch app"
+    "dev": "nodemon app"
   },
   "keywords": [],
   "author": "Fancy (HienMinh56)",
