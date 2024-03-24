@@ -235,6 +235,50 @@ const togglePlay = async function (player) {
 }
 
 
+const /** {HTMLElement} */ $volumeProgress = document.querySelector('[data-volume-progress]');
+const /** {HTMLElement} */ $volumeBtnIcon = document.querySelector('[data-volume-btn] .icon');
+
+
+/**
+ * Sets the volume icon based on the specified volume level.
+ * 
+ * @param {number} volume - The volume level as a percentage (0 to 100).
+ */
+const setVolumeIcon = function (volume) {
+
+    // The name of the volume icon to be displayed.
+    const volumeIcon =
+        volume > 66 ? 'volume_up' :
+        volume > 33 ? 'volume_down' :
+        volume > 0 ? 'volume_mute' : 'volume_off';
+
+    $volumeBtnIcon.textContent = volumeIcon;
+
+}
+
+
+/**
+ * Updates the volume of a media player and associated UI elements
+ * 
+ * @param {object} player - Spotify player instance.
+ * @returns {void}
+ */
+const updatePlayerVolume = async function (player) {
+
+    const /** {number} */ volumePercent = this.value;
+
+    // Setting player volume icon
+    setVolumeIcon(volumePercent);
+
+    // Set volume to player
+    await player.setVolume(volumePercent / 100);
+
+    // Store volume to localStorage
+    localStorage.setItem('volume', volumePercent);
+
+}
+
+
 window.onSpotifyWebPlaybackSDKReady = () => {
 
     const /** {number} */ volume = localStorage.getItem('volume') ?? 100;
@@ -277,16 +321,29 @@ window.onSpotifyWebPlaybackSDKReady = () => {
             await player.previousTrack();
         });
 
+
         // Control player seek
         $playerLgProgress.addEventListener('input', async function () {
             await player.seek(this.value);
         })
+
+
+        // Control player volume
+        $volumeProgress.addEventListener('input', updatePlayerVolume.bind($volumeProgress, player));
 
     });
 
 
     // Call event when any changes occur in player
     player.addListener('player_state_changed', playerStateChange);
+
+
+    // Set player volume and initial visually
+    player.getVolume().then(volume => {
+        const volumePercent = volume * 100;
+        $volumeProgress.value = volumePercent;
+        setVolumeIcon(volumePercent);
+    });
 
 
     // Connect player
