@@ -40,6 +40,13 @@
 
 <body>
 
+    <!--
+        RECENTLY PLAYED
+    -->
+    <%- include('../layouts/recent_played', {
+        recentlyPlayed: locals.recentlyPlayedTracks
+    }) %>
+
     <article class="page custom-scrollbar" data-page>
 
         <!--
