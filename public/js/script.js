@@ -151,3 +151,18 @@ const toggleModalPlayer = function () {
 }
 
 $modalPlayerTogglers && addEventOnElems($modalPlayerTogglers, 'click', toggleModalPlayer);
+
+
+/**
+ * Back and forward functionality
+ */
+const backBtn = document.querySelector('[data-back-btn]');
+const forwardBtn = document.querySelector('[data-forward-btn]');
+
+backBtn?.addEventListener('click', function () {
+    window.history.back();
+});
+
+forwardBtn?.addEventListener('click', function () {
+    window.history.forward();
+});
