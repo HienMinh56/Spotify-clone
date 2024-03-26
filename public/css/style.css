@@ -229,6 +229,12 @@
 
 .recent-play { display: none; }
 
+.grid-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--space-2);
+}
+
 
 
 
@@ -865,6 +871,22 @@
 .list-item .trailing-text { text-align: right; }
 
 
+/**
+ * Pagination
+ */
+
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-5);
+  margin-block-start: var(--space-4);
+  color: var(--on-surface-variant);
+}
+
+.pagination .btn-wrapper { display: flex; }
+
+
 
 
 
@@ -895,6 +917,8 @@
   /**
    * REUSED STYLE
    */
+
+  .grid-list { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
 
 
 
@@ -1099,6 +1123,7 @@
     padding-inline: var(--space-6);
   }
 
+  .grid-list,
   .slider-inner { gap: var(--space-4); }
 
   
