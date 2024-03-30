@@ -21,7 +21,7 @@ const explore = async (req, res) => {
     const currentProfile = await userApi.getProfile(req);
 
     // Recently played tracks
-    const recentlyPlayed = await playerApi.getRecentPlayed(req);
+    const recentlyPlayed = await playerApi.getRecentlyPlayed(req);
     const recentlyPlayedTracks = recentlyPlayed.items.map(({ track }) => track)
 
     // Get several categories
@@ -41,8 +41,8 @@ const exploreDetail = async (req, res) => {
     const currentProfile = await userApi.getProfile(req);
 
     // Recently played tracks
-    const recentlyPlayed = await playerApi.getRecentPlayed(req);
-    const recentlyPlayedTracks = recentlyPlayed.items.map(({ track }) => track)
+    const recentlyPlayed = await playerApi.getRecentlyPlayed(req);
+    const recentlyPlayedTracks = recentlyPlayed.items.map(({ track }) => track);
 
     // Get category tracks
     const catInfo = await categoryApi.getDetail(req);
