@@ -1,0 +1,23 @@
+/*-----------------------------------*\
+  #detail.css
+\*-----------------------------------*/
+
+/**
+ * copyright 2024 Fancy
+ */
+
+.page {
+    position: relative;
+    isolation: isolated;
+}
+
+.page::before,
+.page::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 480px;
+    z-index: -1;
+}
