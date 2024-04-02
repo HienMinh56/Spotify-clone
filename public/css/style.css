@@ -1282,10 +1282,24 @@
   
 
   /**
-   * MENu
+   * MENU
    */
 
   .menu-wrapper { right: var(--space-6); }
+  
+
+  /**
+   * LIST ITEM
+   */
+
+  .item-number,
+  .item-album { display: block; }
+
+  .item-list .item-number { min-width: 28px; }
+
+  .list-item .item-content {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) 42px;
+  }
 
 }
 

@@ -48,7 +48,23 @@ const getCategoryPlaylist = async (req, itemLimit) => {
 }
 
 
+/**
+ * Get a playlist owned by a Spotify user
+ * 
+ * @param {Object} req - Server request object
+ * @returns {Object}
+ */
+const getDetail = async (req) => {
+    const { playlistId } = req.params;
+
+    const { data: playlistDetail } = await getData(`/playlists/${playlistId}?fields=description,external_urls,followers(total),id,images,name,owner(display_name),tracks(total,items(track(album(images,name),artists,duration_ms,name,id,uri))),type,uri`, req.cookies.access_token);
+
+    return playlistDetail;
+}
+
+
 module.exports = {
     getFeatured,
-    getCategoryPlaylist
+    getCategoryPlaylist,
+    getDetail
 }
