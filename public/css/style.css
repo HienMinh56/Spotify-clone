@@ -319,6 +319,8 @@
   gap: var(--space-05);
 }
 
+.divider.variant { background-color: var(--outline-variant); }
+
 
 
 
