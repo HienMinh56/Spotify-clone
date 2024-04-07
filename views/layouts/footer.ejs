@@ -37,8 +37,12 @@
 
     </div>
 
-    <p class="footer-text body-medium">
-        &copy; 2024 Musify. Developed by Fancy
+    <p class="footer-text body-medium" id="footer">
+        <!-- &copy; <span id="year"></span> Musify. Developed by Fancy-->
     </p>
 
 </div>
+
+<script>
+    document.getElementById('footer').innerHTML = '&copy ' + new Date().getFullYear() + ' Musify. Developed by Fancy';
+</script>
