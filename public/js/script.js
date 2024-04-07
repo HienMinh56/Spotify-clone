@@ -178,3 +178,16 @@ $page?.addEventListener('scroll', function () {
         this.classList[$listHeader.offsetTop > 0 ? 'add' : 'remove']('list-header-active');
     }
 });
+
+
+/**
+ * Search filter item active
+ */
+const $searchFilterItems = document.querySelectorAll('[data-search-filter]');
+
+const activeSearchFilterItem = function () {
+    document.querySelector('[data-search-filter].active')?.classList.remove('active');
+    this.classList.add('active');
+}
+
+$searchFilterItems && addEventOnElems($searchFilterItems, 'click', activeSearchFilterItem);

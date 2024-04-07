@@ -24,6 +24,7 @@ const explore = require('./src/routes/explore.route');
 const album = require('./src/routes/album.route');
 const playlist = require('./src/routes/playlist.route');
 const profile = require('./src/routes/profile.route');
+const search = require('./src/routes/search.route');
 
 
 // Initial express app
@@ -47,6 +48,12 @@ app.use(express.static(`${__dirname}/public`));
  * Enable cors & cookie parser
  */
 app.use(cors()).use(cookieParser());
+
+
+/**
+ * Encode post request body
+ */
+app.use(express.urlencoded({ extended: true }));
 
 
 /**
@@ -95,6 +102,12 @@ app.use('/playlist', playlist);
  * Playlist page
  */
 app.use('/me', profile);
+
+
+/**
+ * Search result page
+ */
+app.use('/search', search);
 
 
 app.listen(5000, () => {
