@@ -13,7 +13,7 @@
         tracks: { items: albumTracks }
     } = locals.albumDetail;
 
-    const /** {string} */ artistName = artists.map(item => item.name).join(', ');
+    const /** {string} */ artistsName = artists.map(item => item.name).join(', ');
 
     const {
         url: detailBanner = '/images/album-banner.png',
@@ -33,7 +33,7 @@
 <html lang="en">
 <head>
     
-    <%- include('../layouts/head', { title: `${albumName} - Album by ${artistName} | Musify` }) %>
+    <%- include('../layouts/head', { title: `${albumName} - Album by ${artistsName} | Musify` }) %>
 
     <link rel="stylesheet" href="/css/detail.css">
 

@@ -11,6 +11,12 @@
     
     <%- include('../layouts/head', { title: `${locals.title} | Musify` }) %>
 
+    <% if (locals.isArtistAlbum) { %>
+        <style>
+            .card .card-text { text-transform: capitalize; }
+        </style>
+    <% } %>
+
 </head>
 <body>
 
