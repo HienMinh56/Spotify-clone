@@ -48,7 +48,57 @@ const getAlbum = async (req, itemLimit, id) => {
 }
 
 
+/**
+ * Get Spotify catalog information for a single artist identified by their unique Spotify ID
+ * 
+ * @param {Object} req - Server request object
+ * @returns {Object}
+ */
+const getDetail = async (req) => {
+    const { artistId } = req.params;
+
+    const { data: artistDetail } = await getData(`/artists/${artistId}`, req.cookies.access_token)
+
+    return artistDetail;
+}
+
+
+/**
+ * Get Spotify catalog information about an artist's top tracks by country
+ * 
+ * @param {Object} req - Server request object
+ * @param {string} id - The Spotify Id of the artist
+ * @returns {Object}
+ */
+const getTopTracks = async (req, id) => {
+    const { artistId = id } = req.params;
+
+    const { data: artistTopTracks } = await getData(`/artists/${artistId}/top-tracks?market=${apiConfig.MARKET}`, req.cookies.access_token);
+
+    return artistTopTracks;
+}
+
+
+/**
+ * Get Spotify catalog information about artists similar to given artist. Similarity is based on analysis of the Spotify community's listening history
+ * 
+ * @param {Object} req - Server request object
+ * @param {string} id - The Spotify ID of the artist
+ * @returns {Object}
+ */
+const getRelated = async (req, id) => {
+    const { artistId = id } = req.params;
+
+    const { data: relatedArtist } = await getData(`/artists/${artistId}/related-artists`, req.cookies.access_token);
+
+    return relatedArtist;
+}
+
+
 module.exports = {
     getSeveralDetail,
-    getAlbum
+    getAlbum,
+    getDetail,
+    getTopTracks,
+    getRelated
 }
