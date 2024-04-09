@@ -26,6 +26,7 @@ const playlist = require('./src/routes/playlist.route');
 const profile = require('./src/routes/profile.route');
 const search = require('./src/routes/search.route');
 const artist = require('./src/routes/artist.route');
+const track = require('./src/routes/track.route');
 
 
 // Initial express app
@@ -115,6 +116,12 @@ app.use('/search', search);
  * Artist page
  */
 app.use('/artist', artist);
+
+
+/**
+ * Track page
+ */
+app.use('/track', track);
 
 
 app.listen(5000, () => {
