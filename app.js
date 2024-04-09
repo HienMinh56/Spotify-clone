@@ -27,6 +27,7 @@ const profile = require('./src/routes/profile.route');
 const search = require('./src/routes/search.route');
 const artist = require('./src/routes/artist.route');
 const track = require('./src/routes/track.route');
+const logout = require('./src/routes/logout.route');
 
 
 // Initial express app
@@ -77,6 +78,12 @@ app.use(authenticatedUser);
 
 
 /**
+ * Logout page
+ */
+app.use('/logout', logout);
+
+
+/**
  * Home page
  */
 app.use('/', home);
@@ -122,6 +129,14 @@ app.use('/artist', artist);
  * Track page
  */
 app.use('/track', track);
+
+
+/**
+ * 404 page
+ */
+app.use((req, res) => {
+    res.render('./pages/404');
+});
 
 
 app.listen(5000, () => {
