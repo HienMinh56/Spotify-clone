@@ -15,10 +15,10 @@ function showForm() {
     form.style.border = '1px solid #ced4da';
     form.style.padding = '20px';
     form.style.zIndex = '10000';
-    form.style.color = '#212529'; // Đặt màu chữ đậm hơn để tăng độ rõ
-    form.style.fontSize = '16px'; // Tăng kích thước chữ nếu cần
-    form.style.fontFamily = 'Arial, sans-serif'; // Sử dụng font dễ đọc
-    form.style.textAlign = 'center'; // Căn giữa văn bản
+    form.style.color = '#212529';
+    form.style.fontSize = '16px';
+    form.style.fontFamily = 'Arial, sans-serif';
+    form.style.textAlign = 'center';
     form.innerHTML = 'DevTools is disabled on this website!';
     document.body.appendChild(form);
 
